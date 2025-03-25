@@ -33,15 +33,15 @@ def draw_bg():
 
 #create spaceship class
 class Spaceship(pygame.sprite.Sprite):
-    def __init__(self, x, y):
+    def __init__(self, x, y, health):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load("img/spaceship.png")
         self.rect = self.image.get_rect()
         self.rect.center = [x, y]
-        self.health_start
+        self.health_start = health
         self.health_remaining = health
 
-
+    
     def update(self):
         #set movement speed
         speed = 8
@@ -55,6 +55,8 @@ class Spaceship(pygame.sprite.Sprite):
 
         #draw health bar
         pygame.draw.rect(screen, red, (self.rect.x, (self.rect.bottom +10), self.rect.width, 15))
+        if self.health_remaining > 0:
+            pygame.draw.rect(screen, green, (self.rect.x, (self.rect.bottom +10), int(self.rect.width *(self.health_remaining / self.health_start)), 15))
 
 
 
@@ -89,9 +91,3 @@ while run:
     
 
     pygame.display.update()
-
-
-
-pygame.quit()
-
-
