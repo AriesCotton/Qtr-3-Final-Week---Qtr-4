@@ -1,0 +1,17 @@
+Label('Position Properties Demo', 200, 20, size=20, bold=True)
+Label('Press the mouse to move the rectangles', 200, 45)
+Label('Blue rectangle sets centerX,centerY', 200, 65)
+Label('Gold rectangle sets left,top', 200, 85)
+Label('Red rectangle sets right,bottom', 200, 105)
+
+r1 = Rect( 50, 150, 150, 100, fill='maroon', opacity=50)
+r2 = Rect(125, 200, 150, 100, fill='navy', opacity=50)
+r3 = Rect(200, 250, 150, 100, fill='gold', opacity=50)
+
+def onMousePress(mouseX, mouseY):
+    r1.right = mouseX
+    r1.bottom = mouseY
+    r2.centerX = mouseX
+    r2.centerY = mouseY
+    r3.left = mouseX
+    r3.top = mouseY
